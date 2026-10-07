@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatNode Gael</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main>
+    <section id="login">
+      <h1>ChatNode Gael</h1>
+      <p>Conversa y comparte archivos en tiempo real.</p>
+
+      <form id="form-login">
+        <label for="nombre">Nombre de usuario</label>
+        <input
+          id="nombre"
+          type="text"
+          maxlength="30"
+          placeholder="Escribe tu nombre"
+          autocomplete="nickname"
+          required
+        >
+        <button type="submit">Ingresar al chat</button>
+      </form>
+
+      <p id="error-login" role="alert"></p>
+    </section>
+
+    <section id="chat" hidden>
+      <header>
+        <h1>ChatNode Gael</h1>
+        <p id="mi-usuario"></p>
+        <p id="estado" role="status">Conectando…</p>
+      </header>
+
+      <aside>
+        <h2>Usuarios conectados</h2>
+        <ul id="usuarios"></ul>
+      </aside>
+
+      <section aria-label="Conversación">
+        <div
+          id="mensajes"
+          role="log"
+          aria-live="polite"
+          aria-relevant="additions"
+        ></div>
+
+        <p id="escribiendo" role="status"></p>
+
+        <form id="form-mensaje">
+          <label for="mensaje">Mensaje</label>
+          <input
+            id="mensaje"
+            type="text"
+            maxlength="2000"
+            placeholder="Escribe un mensaje"
+            autocomplete="off"
+            required
+          >
+          <button id="btn-enviar" type="submit">Enviar</button>
+        </form>
+
+        <form id="form-archivo">
+          <label for="archivo">Adjuntar archivo</label>
+          <input id="archivo" type="file" required>
+          <button id="btn-archivo" type="submit">
+            Compartir archivo
+          </button>
+          <small>Fotos, videos o documentos. Máximo 20 MB.</small>
+        </form>
+
+        <p id="error-chat" role="alert"></p>
+
+        <label>
+          <input id="sonido" type="checkbox" checked>
+          Sonido de mensajes
+        </label>
+      </section>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/chat.js"></script>
+</body>
+</html>
